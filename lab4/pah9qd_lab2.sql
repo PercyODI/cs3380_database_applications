@@ -1,5 +1,3 @@
--- Use 'DROP TABLE IF EXISTS table CASCADE;'
-
 SET FOREIGN_KEY_CHECKS = 0;
 
 DROP TABLE IF EXISTS building;
@@ -15,13 +13,14 @@ CREATE TABLE building (
 DROP TABLE IF EXISTS office;
 
 CREATE TABLE office (
-	room_number INT PRIMARY KEY,
+	room_number INT,
 	waiting_room_capacity INT,
 	building_address VARCHAR(30) NOT NULL,
 	building_zipcode VARCHAR(30) NOT NULL,
 	FOREIGN KEY (building_address, building_zipcode)
 		REFERENCES building (address, zipcode)
-			ON DELETE CASCADE
+			ON DELETE CASCADE ON UPDATE CASCADE,
+	PRIMARY KEY (room_number, building_address, building_zipcode)
 ) ENGINE = INNODB;
 
 DROP TABLE IF EXISTS doctor;
@@ -31,11 +30,13 @@ CREATE TABLE doctor (
 	first_name VARCHAR(30),
 	last_name VARCHAR(30),
 	office_room INT,
-	FOREIGN KEY (office_room)
-		REFERENCES office(room_number)
+	building_address VARCHAR(30),
+	building_zipcode VARCHAR(30),
+	FOREIGN KEY (office_room, building_address, building_zipcode)
+		REFERENCES office(room_number, building_address, building_zipcode)
+			ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE = INNODB;
 
-DROP TABLE IF EXISTS insurance;
 DROP TABLE IF EXISTS patient;
 
 CREATE TABLE patient (
@@ -51,7 +52,7 @@ CREATE TABLE insurance (
 	insurer VARCHAR(100),
 	patient_ssn VARCHAR(11) PRIMARY KEY,
 	FOREIGN KEY (patient_ssn) REFERENCES patient(ssn)
-		ON DELETE CASCADE
+		ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = INNODB;
 
 DROP TABLE IF EXISTS `condition`;
@@ -70,7 +71,7 @@ CREATE TABLE labwork (
 	patient_ssn VARCHAR(11),
 	FOREIGN KEY (patient_ssn) 
 		REFERENCES patient(ssn)
-			ON DELETE CASCADE,
+			ON DELETE CASCADE ON UPDATE CASCADE,
 	PRIMARY KEY(test_name, test_timestamp)
 ) ENGINE = INNODB;
 
@@ -83,10 +84,10 @@ CREATE TABLE appointment (
 	doctor_license_num INT,
 	FOREIGN KEY (patient_ssn) 
 		REFERENCES patient(ssn)
-			ON DELETE CASCADE,
+			ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY (doctor_license_num) 
 		REFERENCES doctor(medical_license_num)
-			ON DELETE CASCADE
+			ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = INNODB;
 
 DROP TABLE IF EXISTS patient_condition;
@@ -96,10 +97,10 @@ CREATE TABLE patient_condition (
 	condition_icd10 VARCHAR(7),
 	FOREIGN KEY (patient_ssn) 
 		REFERENCES patient(ssn)
-			ON DELETE CASCADE,
+			ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY (condition_icd10)
 		REFERENCES `condition`(icd10)
-			ON DELETE CASCADE,
+			ON DELETE CASCADE ON UPDATE CASCADE,
 	PRIMARY KEY(patient_ssn, condition_icd10)
 ) ENGINE = INNODB;
 
