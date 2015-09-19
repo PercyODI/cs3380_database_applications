@@ -1,7 +1,18 @@
 {
+    "ace": {
+        "search": {
+            "@backwards": "false",
+            "@highlightmatches": "true",
+            "@matchcase": "false",
+            "@preservecase": "false",
+            "@regex": true,
+            "@wholeword": "false",
+            "@wraparound": "true"
+        }
+    },
     "console": {
         "@expanded": true,
-        "@height": 457,
+        "@height": 358,
         "@maximized": "false",
         "json()": {
             "nodes": [
@@ -27,8 +38,8 @@
                                 "terminal": {
                                     "id": "devel_480",
                                     "cwd": "",
-                                    "width": 577,
-                                    "height": 431
+                                    "width": 690,
+                                    "height": 332
                                 }
                             },
                             "editorType": "terminal",
@@ -38,12 +49,20 @@
                             "type": "tab",
                             "name": "tab2",
                             "path": "",
-                            "className": [],
+                            "className": [
+                                "tab2"
+                            ],
                             "document": {
-                                "title": "Immediate",
+                                "changed": false,
                                 "meta": {},
                                 "filter": true,
-                                "changed": false
+                                "title": "Immediate (Javascript (browser))",
+                                "tooltip": "Immediate (Javascript (browser))",
+                                "immediate": {
+                                    "type": "jsbrowser",
+                                    "history": [],
+                                    "pos": 0
+                                }
                             },
                             "editorType": "immediate",
                             "active": false
@@ -60,7 +79,7 @@
                 },
                 {
                     "type": "pane",
-                    "name": "pane2",
+                    "name": "pane5",
                     "nodes": [
                         {
                             "type": "tab",
@@ -80,15 +99,15 @@
                                 "terminal": {
                                     "id": "devel_450",
                                     "cwd": "/lab4",
-                                    "width": 539,
-                                    "height": 431
+                                    "width": 691,
+                                    "height": 332
                                 }
                             },
                             "editorType": "terminal",
                             "active": true
                         }
                     ],
-                    "width": "48.22478991596639%",
+                    "width": "50%",
                     "skin": "editor_tab",
                     "skinset": "default",
                     "meta": {
@@ -109,19 +128,20 @@
     },
     "ext": {
         "counters": {
-            "@ace": 1,
-            "@acestatus": 1,
+            "@ace": 5,
+            "@acestatus": 4,
             "@divider": 4,
-            "@document": 6,
+            "@document": 10,
             "@form": 5,
-            "@menu": 8,
-            "@menuitem": 19,
-            "@pane": 3,
+            "@immediate": 1,
+            "@menu": 5,
+            "@menuitem": 13,
+            "@pane": 8,
             "@preferences": 1,
-            "@session": 5,
-            "@tab": 6,
+            "@session": 10,
+            "@tab": 9,
             "@tree": 2,
-            "@undoManager": 6,
+            "@undoManager": 9,
             "@welcome": 1
         }
     },
@@ -140,13 +160,13 @@
     "panecycle": {
         "json()": [
             "tab3",
-            "tab4",
+            "tab6",
             "tab1"
         ]
     },
     "panels": {
         "@active-left": "tree",
-        "@width-left": 251,
+        "@width-left": 146,
         "commands.panel": {
             "@enabled": "true",
             "@name": "commands.panel"
@@ -181,11 +201,33 @@
             ]
         }
     },
+    "recentfiles": {
+        "json()": []
+    },
+    "search-history": {
+        "replace": {
+            "json()": [
+                "DROP TABLE IF EXISTS $1;",
+                "$0 CASCADE",
+                "DROP TABLE IF EXISTS $0 CASCADE;"
+            ]
+        },
+        "search": {
+            "json()": [
+                "DROP TABLE IF EXISTS (\\w+);",
+                "DROP TABLE IF EXISTS (\\w+) CASCADE;",
+                "DROP TABLE IF EXISTS \\w+",
+                "DROP TABLE IF EXISTS \\S+;"
+            ]
+        }
+    },
     "tabs": {
         "json()": {
             "focus": "/lab4/pah9qd_lab2.sql",
             "meta": {
                 "accessList": [
+                    "tab6",
+                    "tab7",
                     "tab4",
                     "tab0"
                 ]
@@ -194,16 +236,78 @@
             "nodes": [
                 {
                     "type": "tab",
-                    "name": "tab4",
+                    "name": "tab0",
+                    "path": "/ClearDB Details",
+                    "className": [
+                        "tab0"
+                    ],
+                    "document": {
+                        "filter": true,
+                        "title": "ClearDB Details",
+                        "tooltip": "/ClearDB Details",
+                        "ace": {
+                            "folds": [],
+                            "scrolltop": 0,
+                            "scrollleft": 0,
+                            "selection": {
+                                "start": {
+                                    "row": 2,
+                                    "column": 18
+                                },
+                                "end": {
+                                    "row": 2,
+                                    "column": 18
+                                },
+                                "isBackwards": false
+                            },
+                            "options": {
+                                "guessTabSize": true,
+                                "useWrapMode": false,
+                                "wrapToView": true
+                            },
+                            "firstLineState": 0
+                        },
+                        "hash": "c0d092ed6a0f52afdf36ad6bf25fb194b113892c",
+                        "meta": {
+                            "timestamp": 1442588092265
+                        },
+                        "changed": false
+                    },
+                    "editorType": "ace",
+                    "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab7",
+                    "path": "/Things to check out",
+                    "className": [
+                        "tab7"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1442600890905
+                        },
+                        "filter": true,
+                        "title": "Things to check out",
+                        "tooltip": "/Things to check out",
+                        "ace": {}
+                    },
+                    "editorType": "ace",
+                    "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab6",
                     "path": "/lab4/pah9qd_lab2.sql",
                     "className": [
-                        "tab4",
+                        "tab6",
                         "focus"
                     ],
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1442590529014
+                            "timestamp": 1442679995227
                         },
                         "filter": true,
                         "title": "pah9qd_lab2.sql",
@@ -212,26 +316,6 @@
                     },
                     "editorType": "ace",
                     "active": true
-                },
-                {
-                    "type": "tab",
-                    "name": "tab0",
-                    "path": "/ClearDB Details",
-                    "className": [
-                        "tab0"
-                    ],
-                    "document": {
-                        "changed": false,
-                        "meta": {
-                            "timestamp": 1442588092263
-                        },
-                        "filter": true,
-                        "title": "ClearDB Details",
-                        "tooltip": "/ClearDB Details",
-                        "ace": {}
-                    },
-                    "editorType": "ace",
-                    "active": false
                 }
             ],
             "skin": "editor_tab",
@@ -241,7 +325,7 @@
     },
     "tree_selection": {
         "json()": [
-            "/lab4"
+            "/lab4/pah9qd_lab2.sql"
         ]
     }
 }

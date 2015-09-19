@@ -79,7 +79,7 @@ DROP TABLE IF EXISTS appointment;
 
 CREATE TABLE appointment (
 	appt_time TIME,
-	appt_date DATE,
+	appt_date DATE NOT NULL,
 	patient_ssn VARCHAR(11),
 	doctor_license_num INT,
 	FOREIGN KEY (patient_ssn) 
@@ -87,7 +87,8 @@ CREATE TABLE appointment (
 			ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY (doctor_license_num) 
 		REFERENCES doctor(medical_license_num)
-			ON DELETE CASCADE ON UPDATE CASCADE
+			ON DELETE CASCADE ON UPDATE CASCADE,
+	PRIMARY KEY (patient_ssn, doctor_license_num, appt_date)
 ) ENGINE = INNODB;
 
 DROP TABLE IF EXISTS patient_condition;
@@ -112,9 +113,9 @@ INSERT INTO office VALUES (14, 15, '133 Business Ave, Scranton', '18501');
 INSERT INTO office VALUES (172, 250, '252 Main St, Astoria', '97103');
 INSERT INTO office VALUES (4, 10, '508 Providence, Columbia', '65201');
 
-INSERT INTO doctor VALUES (155678, 'Mary', 'Hutson', 4);
-INSERT INTO doctor VALUES (17272789, 'John', 'Smith', 14);
-INSERT INTO doctor VALUES (1992992, 'Rory', 'Riley', 4);
+INSERT INTO doctor VALUES (155678, 'Mary', 'Hutson', 4, '508 Providence, Columbia', '65201');
+INSERT INTO doctor VALUES (17272789, 'John', 'Smith', 14, '133 Business Ave, Scranton', '18501');
+INSERT INTO doctor VALUES (1992992, 'Rory', 'Riley', 4, '508 Providence, Columbia', '65201');
 
 INSERT INTO patient VALUES ('552-99-8898', 'Ryan', 'Givens');
 INSERT INTO patient VALUES ('555-99-0000', 'Lindsey', 'Whetsell');
